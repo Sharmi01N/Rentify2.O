@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch and display all products
     async function fetchProducts() {
         try {
-            const res = await fetch('http://localhost:5000/api/products');
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/products');
             const products = await res.json();
             window.allProducts = products;
             renderProducts(products);
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         list.innerHTML = products.map(product => `
             <div class="product-card">
-                <img src="http://localhost:5000/uploads/${product.image}" alt="Product Image">
+                <img src="https://rentify2-o-1.onrender.com/uploads/${product.image}" alt="Product Image">
                 <h4>${product.title}</h4>
                 <p><b>Location:</b> ${product.location}</p>
                 <p><b>Contact:</b> ${product.contact}</p>
@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const message = document.getElementById('complaintMessage').value;
         try {
-            const res = await fetch('http://localhost:5000/api/complaints', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/complaints', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
