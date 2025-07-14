@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const formData = new FormData(uploadForm);
         try {
-            const res = await fetch('http://localhost:5000/api/products', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/products', {
                 method: 'POST',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
                 body: formData
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch and display seller's products
     async function fetchProducts() {
         try {
-            const res = await fetch('http://localhost:5000/api/products/my', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/products/my', {
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
             });
             const products = await res.json();
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         list.innerHTML = products.map(product => `
             <div class="product-card">
-                <img src="http://localhost:5000/uploads/${product.image}" alt="Product Image">
+                <img src="https://rentify2-o-1.onrender.com/uploads/${product.image}" alt="Product Image">
                 <h4>${product.title}</h4>
                 <p><b>Location:</b> ${product.location}</p>
                 <p><b>Contact:</b> ${product.contact}</p>
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.deleteProduct = async function(id) {
         if (!confirm('Are you sure you want to delete this product?')) return;
         try {
-            const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+            const res = await fetch(`https://rentify2-o-1.onrender.com/api/products/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
             });
