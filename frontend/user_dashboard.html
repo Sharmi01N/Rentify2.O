@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+</head>
+<body class="user-dashboard">
+    <div class="geometric-shape circle"></div>
+    <div class="geometric-shape triangle"></div>
+    <div class="geometric-shape rectangle"></div>
+    <div class="geometric-shape circle small"></div>
+    <div class="geometric-shape circle large"></div>
+    <div class="geometric-shape triangle large"></div>
+    <div class="geometric-shape triangle small"></div>
+    <div class="geometric-shape rectangle thin"></div>
+    <div class="geometric-shape rectangle center"></div>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="../rentify logo.jpeg" alt="Rentify Logo" class="navbar-logo">
+            <span class="navbar-title">Rentify</span>
+        </div>
+        <div class="navbar-right">
+            <img id="navbarProfilePic" src="images/default-profile.png" alt="Profile" class="navbar-profile-pic">
+            <button class="navbar-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    <main style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;">
+        <div class="card">
+            <section class="dashboard-welcome" style="text-align:center;">
+                <h2>Your Profile</h2>
+                <p style="color:#bdbdfc;">Manage your profile information and picture.</p>
+            </section>
+            <section class="profile-section">
+                <form id="profileForm" enctype="multipart/form-data" class="form-section">
+                    <div class="profile-pic-container">
+                        <img id="profilePicPreview" src="images/default-profile.png" alt="Profile Picture">
+                        <input type="file" name="profilePic" id="profilePicInput" accept="image/*">
+                    </div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                    <label for="location">Location</label>
+                    <input type="text" name="location" id="location" required>
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" name="mobile" id="mobile" required pattern="[0-9]{11}" maxlength="11" placeholder="e.g. 01XXXXXXXXX">
+                    <label for="contact">Contact</label>
+                    <input type="text" name="contact" id="contact">
+                    <label for="address">Address</label>
+                    <input type="text" name="address" id="address">
+                    <button type="submit" class="login-btn">Save Changes</button>
+                </form>
+            </section>
+        </div>
+        <button class="login-btn" style="margin:2rem auto 0 auto;display:block;" onclick="window.location.href='user_home.html'">Back to Home</button>
+    </main>
+    <script src="js/user_dashboard.js"></script>
+    <script>
+    // Set navbar profile pic from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.profilePic) {
+            document.getElementById('navbarProfilePic').src = 'http://localhost:5000/uploads/' + user.profilePic;
+        }
+    });
+    </script>
+</body>
+</html> 

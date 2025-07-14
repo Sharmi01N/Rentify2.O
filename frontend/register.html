@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="geometric-shape circle"></div>
+    <div class="geometric-shape triangle"></div>
+    <div class="geometric-shape rectangle"></div>
+    <div class="geometric-shape circle small"></div>
+    <div class="geometric-shape circle large"></div>
+    <div class="geometric-shape triangle large"></div>
+    <div class="geometric-shape triangle small"></div>
+    <div class="geometric-shape rectangle thin"></div>
+    <div class="geometric-shape rectangle center"></div>
+    <div class="card">
+        <div class="logo" onclick="window.location.href='index.html'" style="font-family:'Italianno',cursive;font-size:2.5rem;color:#6c63ff;cursor:pointer;margin-bottom:1.2rem;">rentify</div>
+        <section class="form-section">
+            <h2>Create Your Account</h2>
+            <div id="registerError" style="color:#ff6b6b;margin-bottom:0.7rem;display:none;"></div>
+            <form id="registerForm" autocomplete="on">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required autocomplete="name">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" required autocomplete="address-level2">
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" required pattern="[0-9]{11}" maxlength="11" placeholder="e.g. 01XXXXXXXXX">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required autocomplete="username">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required autocomplete="new-password">
+                <label for="role">Register as</label>
+                <select id="role" name="role" required>
+                    <option value="user">User</option>
+                    <option value="seller">Seller</option>
+                </select>
+                <button type="submit" class="login-btn">Register</button>
+            </form>
+            <p class="form-link" style="margin-top:1.2rem;color:#bdbdfc;">Already have an account? <a href="login.html" style="color:#6c63ff;">Login here</a></p>
+        </section>
+    </div>
+    <script src="js/register.js"></script>
+</body>
+</html> 

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Home - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Italianno&display=swap" rel="stylesheet">
+</head>
+<body class="user-home">
+    <div class="geometric-shape circle"></div>
+    <div class="geometric-shape triangle"></div>
+    <div class="geometric-shape rectangle"></div>
+    <div class="geometric-shape circle small"></div>
+    <div class="geometric-shape circle large"></div>
+    <div class="geometric-shape triangle large"></div>
+    <div class="geometric-shape triangle small"></div>
+    <div class="geometric-shape rectangle thin"></div>
+    <div class="geometric-shape rectangle center"></div>
+    <nav class="navbar">
+        <div class="navbar-left">
+            <img src="../rentify logo.jpeg" alt="Rentify Logo" class="navbar-logo">
+            <span class="navbar-title">Rentify</span>
+        </div>
+        <div class="navbar-center">
+            <input type="text" id="navbarSearchInput" class="navbar-search" placeholder="Search products...">
+        </div>
+        <div class="navbar-right">
+            <img id="navbarProfilePic" src="images/default-profile.png" alt="Profile" class="navbar-profile-pic">
+            <button class="navbar-btn" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+    <main style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;">
+        <section class="dashboard-welcome" style="text-align:center;background:#181824;padding:2rem 1rem;border-radius:1.2rem;box-shadow:0 2px 12px #0005;">
+            <h2 style="color:#fff;">Welcome, <span id="userName" style="color:#6c63ff;"></span>!</h2>
+            <p style="color:#fff;font-size:1.2rem;">Step into a world where renting is effortless and possibilities are endless. Discover, connect, and experience the future of rentals with Rentify!</p>
+        </section>
+        <section class="product-list-section" style="width:100%;max-width:1100px;">
+            <h3 style="color:#6c63ff;">All Products</h3>
+            <div id="productList" class="product-list"></div>
+        </section>
+        <section class="complaint-section" style="width:100%;max-width:500px;margin-top:2rem;">
+            <h3 style="color:#6c63ff;">Complain to Admin</h3>
+            <form id="complaintForm" class="form-section">
+                <textarea name="message" id="complaintMessage" rows="3" placeholder="Write your complaint here..." required></textarea>
+                <button type="submit" class="login-btn">Send Complaint</button>
+            </form>
+        </section>
+        <button class="login-btn" style="margin:2rem auto 0 auto;display:block;" onclick="window.location.href='index.html'">Back to Homepage</button>
+    </main>
+    <script src="js/user_home.js"></script>
+    <script>
+    // Set navbar profile pic from localStorage
+    document.addEventListener('DOMContentLoaded', function() {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (user && user.profilePic) {
+            document.getElementById('navbarProfilePic').src = 'http://localhost:5000/uploads/' + user.profilePic;
+        }
+        // Sync navbar search with main search
+        const navbarSearch = document.getElementById('navbarSearchInput');
+        const mainSearch = document.getElementById('searchInput');
+        navbarSearch.addEventListener('input', function() {
+            mainSearch.value = navbarSearch.value;
+            mainSearch.dispatchEvent(new Event('input'));
+        });
+        mainSearch.addEventListener('input', function() {
+            navbarSearch.value = mainSearch.value;
+        });
+    });
+    </script>
+</body>
+</html> 

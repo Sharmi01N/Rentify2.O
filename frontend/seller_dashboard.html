@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - Rentify</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="seller-dashboard">
+    <div class="geometric-shape circle"></div>
+    <div class="geometric-shape triangle"></div>
+    <div class="geometric-shape rectangle"></div>
+    <div class="geometric-shape circle small"></div>
+    <div class="geometric-shape circle large"></div>
+    <div class="geometric-shape triangle large"></div>
+    <div class="geometric-shape triangle small"></div>
+    <div class="geometric-shape rectangle thin"></div>
+    <div class="geometric-shape rectangle center"></div>
+    <header>
+        <div class="logo" onclick="window.location.href='index.html'" style="font-family:'Italianno',cursive;font-size:2.5rem;color:#6c63ff;cursor:pointer;margin-bottom:1.2rem;">rentify</div>
+        <button class="logout-btn navbar-btn" onclick="logout()">Logout</button>
+    </header>
+    <main style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:70vh;">
+        <div class="card">
+            <section class="dashboard-welcome" style="text-align:center;">
+                <h2>Your Profile</h2>
+                <p style="color:#bdbdfc;">Manage your profile information and picture.</p>
+            </section>
+            <section class="profile-section">
+                <form id="profileForm" enctype="multipart/form-data" class="form-section">
+                    <div class="profile-pic-container">
+                        <img id="profilePicPreview" src="images/default-profile.png" alt="Profile Picture">
+                        <input type="file" name="profilePic" id="profilePicInput" accept="image/*">
+                    </div>
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name" required>
+                    <label for="contact">Contact</label>
+                    <input type="text" name="contact" id="contact">
+                    <label for="address">Address</label>
+                    <input type="text" name="address" id="address">
+                    <button type="submit" class="login-btn">Save Changes</button>
+                </form>
+            </section>
+        </div>
+        <section class="upload-section">
+            <h3>Add a Product</h3>
+            <form id="uploadForm" enctype="multipart/form-data" class="form-section">
+                <input type="text" name="title" placeholder="Product Title" required>
+                <input type="text" name="location" placeholder="Location" required>
+                <input type="text" name="contact" placeholder="Contact Details" required>
+                <input type="number" name="price" placeholder="Price (per month)" required>
+                <input type="number" name="duration" placeholder="Duration (months)" required>
+                <input type="file" name="image" accept="image/*" required>
+                <button type="submit" class="login-btn">Add Product</button>
+            </form>
+        </section>
+        <section class="product-list-section" style="width:100%;max-width:1100px;">
+            <h3 style="color:#6c63ff;">Your Products</h3>
+            <input type="text" id="searchInput" placeholder="Search your products..." class="navbar-search" style="margin-bottom:1.2rem;">
+            <div id="productList" class="product-list"></div>
+        </section>
+    </main>
+    <script src="js/seller_dashboard.js"></script>
+</body>
+</html> 
