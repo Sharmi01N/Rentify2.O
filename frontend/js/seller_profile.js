@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch seller profile from backend
     async function fetchProfile() {
         try {
-            const res = await fetch('http://localhost:5000/api/auth/profile', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/auth/profile', {
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
             });
             const data = await res.json();
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.getElementById('location').value = data.user.location || '';
                 document.getElementById('mobile').value = data.user.mobile || '';
                 if (data.user.profilePic) {
-                    document.getElementById('profilePicPreview').src = 'http://localhost:5000/uploads/' + data.user.profilePic;
+                    document.getElementById('profilePicPreview').src = 'https://rentify2-o-1.onrender.com/uploads/' + data.user.profilePic;
                 }
             }
         } catch (err) {}
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const formData = new FormData(document.getElementById('profileForm'));
         try {
-            const res = await fetch('http://localhost:5000/api/auth/profile', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/auth/profile', {
                 method: 'PATCH',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
                 body: formData
