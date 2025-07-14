@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch seller profile from backend
     async function fetchProfile() {
         try {
-            const res = await fetch('http://localhost:5000/api/auth/login', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: user.email, password: '' }) // password not needed, just for demo
@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const formData = new FormData(document.getElementById('profileForm'));
         try {
-            const res = await fetch('http://localhost:5000/api/auth/profile', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/auth/profile', {
                 method: 'PATCH',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
                 body: formData
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.preventDefault();
         const formData = new FormData(uploadForm);
         try {
-            const res = await fetch('http://localhost:5000/api/products', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/api/products', {
                 method: 'POST',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') },
                 body: formData
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Fetch and display seller's products
     async function fetchProducts() {
         try {
-            const res = await fetch('http://localhost:5000/api/products/user', {
+            const res = await fetch('https://rentify2-o-1.onrender.com/user', {
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
             });
             const products = await res.json();
@@ -117,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         list.innerHTML = products.map(product => `
             <div class="product-card">
-                <img src="http://localhost:5000/uploads/${product.image}" alt="Product Image">
+                <img src="https://rentify2-o-1.onrender.com/uploads/${product.image}" alt="Product Image">
                 <h4>${product.title}</h4>
                 <p><b>Location:</b> ${product.location}</p>
                 <p><b>Contact:</b> ${product.contact}</p>
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.deleteProduct = async function(id) {
         if (!confirm('Are you sure you want to delete this product?')) return;
         try {
-            const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+            const res = await fetch(`https://rentify2-o-1.onrender.com/api/products/${id}`, {
                 method: 'DELETE',
                 headers: { 'Authorization': 'Bearer ' + localStorage.getItem('token') }
             });
