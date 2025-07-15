@@ -618,6 +618,50 @@ body, input, select, textarea, button, .card, .form-section, .upload-section, .p
     letter-spacing: 0.01em;
 }
 
+/* ...existing code... */
+
+/* Extra mobile-friendly tweaks */
+@media (max-width: 600px) {
+  body {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 2vw;
+  }
+  .navbar-center, .navbar-right {
+    width: 100%;
+    margin-top: 0.5rem;
+    justify-content: center;
+  }
+  .card, .product-card {
+    padding: 1.2rem 0.5rem;
+    max-width: 98vw;
+    margin: 1rem auto;
+  }
+  .features-grid, .stats-grid, .contact-info {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+  .hero-title {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .cta-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .product-list {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+    padding: 0 0.2rem;
+  }
+}
+
 .user-dashboard, .seller-dashboard {
     color: #e0e0e0 !important;
 }
